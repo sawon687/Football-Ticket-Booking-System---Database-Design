@@ -66,3 +66,11 @@ INSERT INTO Bookings (booking_id, user_id, match_id, seat_number, payment_status
 (504, 2, 101, NULL, NULL, 150.00),
 (505, 3, 102, 'C-20', 'Pending', 120.00);
 
+
+-- qutstion1 ans
+select match_id,fixture	,base_ticket_price from matches 
+where match_status='Available' and tournament_category='Champions League'
+
+--qustion   2 ans
+select user_id, full_name ,email from users
+where full_name ilike 'Tanvir%' or full_name ilike '%Haque%'
