@@ -17,3 +17,16 @@ insert into Users(user_id,full_name,email,role,phone_number)
 (2, 'Asif Haque', 'asif@mail.com', 'Football Fan', '+8801722222222'),
 (3, 'Sajjad Rahman', 'sajjad@mail.com', 'Ticket Manager', '+8801733333333'),
 (4, 'Jannat Ara', 'jannat@mail.com', 'Football Fan', NULL);
+
+
+
+-- Match table create 
+CREATE TABLE Matches (
+    match_id serial primary key,
+    fixture varchar(100) not null,
+    tournament_category varchar(100) not null,
+    base_ticket_price int check (base_ticket_price > 0) not null,
+    match_status varchar(20) check(match_status in ('Available', 'Selling Fast', 'Sold Out', 'Postponed')) not null
+    
+    
+);
