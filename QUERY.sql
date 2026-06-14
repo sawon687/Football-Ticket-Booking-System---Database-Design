@@ -1,5 +1,9 @@
 --  database create
 create database bookingsystem
+
+DROP TABLE IF EXISTS Bookings;
+DROP TABLE IF EXISTS Matches;
+DROP TABLE IF EXISTS Users
 --  user table create
 create table users(
   users_id serial primary key,
@@ -38,3 +42,18 @@ INSERT INTO Matches (match_id, fixture, tournament_category, base_ticket_price, 
 (103, 'Bayern Munich vs PSG', 'Champions League', 130.00, 'Available'),
 (104, 'AC Milan vs Inter Milan', 'Serie A', 90.00, 'Sold Out'),
 (105, 'Juventus vs Roma', 'Serie A', 80.00, 'Available');
+
+
+--  booking table create 
+
+CREATE TABLE Bookings (
+    booking_id serial primary key,
+    user_id int references users(user_id) on delete cascade ,
+    match_id int references matches(match_id) on delete cascade,
+    seat_number varchar(10),
+    payment_status varchar(20) check(payment_status in ('Pending', 'Confirmed', 'Cancelled', 'Refunded')),
+    total_cost int  check(total_cost > 0) not null
+    
+   
+)
+
