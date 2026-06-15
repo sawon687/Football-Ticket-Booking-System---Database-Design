@@ -82,3 +82,13 @@ where payment_status is null
 select booking_id ,full_name ,fixture,total_cost from bookings
 inner join users on bookings.user_id = users.user_id
 inner join matches on matches.match_id=bookings.match_id
+--- qustion 5 ans
+
+select users.user_id,full_name,booking_id  from users
+left join bookings  on bookings.user_id=users.user_id
+
+--qustion 6 ans
+
+
+select booking_id, match_id,total_cost from bookings
+where total_cost>(select round(avg(total_cost)) from bookings)
