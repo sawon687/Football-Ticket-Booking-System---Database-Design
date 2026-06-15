@@ -94,4 +94,4 @@ where total_cost>(select round(avg(total_cost)) from bookings)
 -- qustion 7 ans
 select match_id,fixture,base_ticket_price  from matches 
 where base_ticket_price<(SELECT MAX(base_ticket_price) 
-FROM matches) order by base_ticket_price desc limit
+FROM matches) order by base_ticket_price desc limit 2
